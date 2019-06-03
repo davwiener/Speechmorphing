@@ -1,0 +1,56 @@
+﻿<Window x:Class="SpeechmorphingHomeAssignment.JSONCompareView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ignore="http://www.galasoft.ch/ignore"
+        mc:Ignorable="d ignore"
+        Height="1000"
+        Width="1000"
+        Title="Speechmorphing compare json"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        
+        DataContext="{Binding Main, Source={StaticResource Locator}}">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Skins/MainSkin.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid x:Name="LayoutRoot">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.7*"/>
+                <RowDefinition Height="0.2*"/>
+
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+
+
+                <Button Content="Choose First JSON" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Margin="191,16,0,0" Height="35"
+                Command="{Binding ChooseJsonFileCommand}" CommandParameter="first"/>
+                <Button Content="Choose second JSON" HorizontalAlignment="Left" VerticalAlignment="Top" Width="133" Margin="719,16,0,0" Height="35"
+                Command="{Binding ChooseJsonFileCommand}" CommandParameter="sec"/>
+                <TextBlock Foreground="WhiteSmoke" TextWrapping="Wrap" TextAlignment="Center" Text="{Binding FirstPath}" VerticalAlignment="Top" Margin="120,63,619,0" Width="253"/>
+                <TextBlock Foreground="WhiteSmoke" TextWrapping="Wrap" TextAlignment="Center" Text="{Binding SecPath}" VerticalAlignment="Top" Margin="654,63,85,0" Width="253"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <TextBox HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                           AcceptsReturn="True" Height="621" Width="933"
+                          Text="{Binding DiffrenceStr}"></TextBox>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Button Content="Compare"  Width="110"  Height="35"
+                Command="{Binding CompareFileCommand}" Margin="441,38,441,121" />
+                <TextBlock HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Text="{Binding ErrorString}" FontSize="18" Foreground="Red" Margin="151,116,107,43" Width="736"   />
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Window>
